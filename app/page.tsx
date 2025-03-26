@@ -28,15 +28,31 @@ export default function Home() {
             height: '100%'
           }}
         />
-        <div style={{
-          position: 'fixed',
-          bottom: 0,
-          left: 0,  // Changed from 'right: 0' to 'left: 0'
-          width: '200px',
-          height: '150px',
-          backgroundColor: '#000000',
-          zIndex: 9999
-        }} />
+        <style jsx global>{`
+          @media (max-width: 768px) {
+            .mobile-hide {
+              display: none !important;
+            }
+            div[class*="flex justify-center items-center lg:pb-0 group bg-transparent lg:hidden"] {
+              display: none !important;
+            }
+            .sc-acd02e1-1 {
+              display: none !important;
+            }
+          }
+        `}</style>
+        <div 
+          className="mobile-hide"
+          style={{
+            position: 'fixed',
+            bottom: 0,
+            left: 0,
+            width: '200px',
+            height: '150px',
+            backgroundColor: '#000000',
+            zIndex: 9999
+          }} 
+        />
       </div>
     </div>
   );
