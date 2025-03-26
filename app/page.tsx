@@ -8,45 +8,33 @@ export default function Home() {
     script.src = 'https://server.fillout.com/embed/v1/';
     script.async = true;
     document.body.appendChild(script);
+    
+    return () => {
+      document.body.removeChild(script);
+    };
   }, []);
 
   return (
     <div className="min-h-screen">
-      <div style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0
-      }}>
+      <div className="fixed inset-0">
         <div
           data-fillout-id="6BFK59t2txus"
           data-fillout-embed-type="fullscreen"
           data-fillout-inherit-parameters
-          style={{
-            width: '100%',
-            height: '100%'
-          }}
+          className="w-full h-full"
         />
         <style jsx global>{`
           @media (max-width: 768px) {
-            .mobile-hide {
-              display: none !important;
-            }
-            div[class*="flex justify-center items-center lg:pb-0 group bg-transparent lg:hidden"] {
-              display: none !important;
-            }
+            .mobile-hide,
+            div[class*="flex justify-center items-center lg:pb-0 group bg-transparent lg:hidden"],
             .sc-acd02e1-1 {
               display: none !important;
             }
           }
         `}</style>
         <div 
-          className="mobile-hide"
+          className="mobile-hide fixed bottom-0 left-0"
           style={{
-            position: 'fixed',
-            bottom: 0,
-            left: 0,
             width: '200px',
             height: '150px',
             backgroundColor: '#000000',
